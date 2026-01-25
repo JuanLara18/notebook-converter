@@ -37,17 +37,17 @@ THEME_CSS = """
 
 /* Card styling */
 .stat-card {
-    background: var(--background-secondary, #f8f9fa);
+    background: var(--background-secondary);
     border-radius: 12px;
     padding: 1.5rem;
     margin: 0.5rem 0;
-    border: 1px solid var(--border-color, #e9ecef);
+    border: 1px solid rgba(128, 128, 128, 0.2);
     transition: transform 0.2s, box-shadow 0.2s;
 }
 
 .stat-card:hover {
     transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.15);
 }
 
 /* Upload section */
@@ -108,7 +108,7 @@ THEME_CSS = """
 
 /* Expander styling */
 .streamlit-expanderHeader {
-    background: var(--background-secondary, #f8f9fa);
+    background: var(--background-secondary);
     border-radius: 8px;
     font-weight: 600;
 }
@@ -119,7 +119,7 @@ THEME_CSS = """
 }
 
 .stTabs [data-baseweb="tab"] {
-    background: var(--background-secondary, #f8f9fa);
+    background: var(--background-secondary);
     border-radius: 8px 8px 0 0;
     padding: 0.75rem 1.5rem;
     font-weight: 500;
@@ -137,7 +137,7 @@ THEME_CSS = """
 
 /* Sidebar styling */
 section[data-testid="stSidebar"] {
-    background: var(--background-secondary, #f8f9fa);
+    background: var(--background-secondary);
 }
 
 section[data-testid="stSidebar"] .block-container {
@@ -154,14 +154,6 @@ section[data-testid="stSidebar"] .block-container {
     font-size: 0.8rem;
     text-transform: uppercase;
     letter-spacing: 0.5px;
-}
-
-/* Dark mode adjustments */
-@media (prefers-color-scheme: dark) {
-    .stat-card {
-        background: #1e1e1e;
-        border-color: #333;
-    }
 }
 </style>
 """
