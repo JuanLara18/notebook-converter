@@ -1,1 +1,4 @@
 /.venv
+
+# Screen recordings used locally to regenerate docs/assets/demo.gif (not for the repo)
+*.webm
