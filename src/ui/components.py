@@ -2,10 +2,10 @@
 Reusable UI components for the application.
 """
 
-import streamlit as st
-from typing import List, Optional
 
-from ..converter.models import ProcessedNotebook, NotebookStats
+import streamlit as st
+
+from ..converter.models import NotebookStats, ProcessedNotebook
 
 
 def render_header() -> None:
@@ -24,7 +24,7 @@ def render_header() -> None:
 def render_stats_card(label: str, value: str | int) -> None:
     """
     Render a statistics card.
-    
+
     Args:
         label: The label for the statistic.
         value: The value to display.
@@ -35,14 +35,14 @@ def render_stats_card(label: str, value: str | int) -> None:
 def render_stats_overview(stats: NotebookStats, total_size: str, file_count: int) -> None:
     """
     Render an overview of all statistics.
-    
+
     Args:
         stats: Combined notebook statistics.
         total_size: Total size string.
         file_count: Number of processed files.
     """
     st.markdown("### Summary")
-    
+
     col1, col2, col3, col4 = st.columns(4)
     with col1:
         st.metric("Files", file_count)
@@ -52,7 +52,7 @@ def render_stats_overview(stats: NotebookStats, total_size: str, file_count: int
         st.metric("Code Cells", stats.code_cells)
     with col4:
         st.metric("Lines of Code", stats.code_lines)
-    
+
     col5, col6, col7, col8 = st.columns(4)
     with col5:
         st.metric("Markdown Cells", stats.markdown_cells)
@@ -67,33 +67,33 @@ def render_stats_overview(stats: NotebookStats, total_size: str, file_count: int
 def render_file_preview(notebook: ProcessedNotebook) -> None:
     """
     Render a preview of the processed notebook content.
-    
+
     Args:
         notebook: The processed notebook to preview.
     """
     tabs = st.tabs(["Code", "Outputs", "Markdown", "Images"])
-    
+
     with tabs[0]:
         if notebook.code:
             st.code(
-                notebook.code[:5000] + ("..." if len(notebook.code) > 5000 else ""), 
+                notebook.code[:5000] + ("..." if len(notebook.code) > 5000 else ""),
                 language="python"
             )
         else:
             st.info("No code cells found.")
-    
+
     with tabs[1]:
         if notebook.outputs:
             st.text(notebook.outputs[:3000] + ("..." if len(notebook.outputs) > 3000 else ""))
         else:
             st.info("No outputs found.")
-    
+
     with tabs[2]:
         if notebook.markdown:
             st.markdown(notebook.markdown[:3000] + ("..." if len(notebook.markdown) > 3000 else ""))
         else:
             st.info("No markdown cells found.")
-    
+
     with tabs[3]:
         if notebook.images:
             st.write(f"{len(notebook.images)} image(s) extracted")
@@ -108,12 +108,12 @@ def render_file_preview(notebook: ProcessedNotebook) -> None:
 def render_notebook_details(notebook: ProcessedNotebook) -> None:
     """
     Render detailed information about a single notebook.
-    
+
     Args:
         notebook: The processed notebook.
     """
     stats = notebook.stats
-    
+
     col1, col2, col3, col4, col5 = st.columns(5)
     with col1:
         st.metric("Size", notebook.size)
@@ -130,7 +130,7 @@ def render_notebook_details(notebook: ProcessedNotebook) -> None:
 def render_progress_bar(current: int, total: int, text: str = "Processing...") -> None:
     """
     Render a progress bar with text.
-    
+
     Args:
         current: Current progress value.
         total: Total value.
@@ -140,30 +140,30 @@ def render_progress_bar(current: int, total: int, text: str = "Processing...") -
     st.progress(progress, text=f"{text} ({current}/{total})")
 
 
-def render_error_message(errors: List[str]) -> None:
+def render_error_message(errors: list[str]) -> None:
     """
     Render error messages in a formatted way.
-    
+
     Args:
         errors: List of error messages.
     """
     if not errors:
         return
-    
+
     with st.expander("Errors", expanded=True):
         for error in errors:
             st.error(error)
 
 
-def render_upload_section() -> Optional[List]:
+def render_upload_section() -> list | None:
     """
     Render the file upload section.
-    
+
     Returns:
         List of uploaded files or None.
     """
     st.markdown("### Upload")
-    
+
     uploaded_files = st.file_uploader(
         "Select .ipynb files",
         type=["ipynb"],
@@ -171,5 +171,5 @@ def render_upload_section() -> Optional[List]:
         help="Upload one or more Jupyter Notebook files. All processing happens in-memory.",
         key="notebook_uploader"
     )
-    
+
     return uploaded_files if uploaded_files else None

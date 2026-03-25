@@ -3,17 +3,17 @@ Helper utility functions.
 """
 
 import re
-from typing import BinaryIO, Union
 from io import BytesIO
+from typing import BinaryIO
 
 
 def format_size(size_bytes: int) -> str:
     """
     Format a byte size into a human-readable string.
-    
+
     Args:
         size_bytes: Size in bytes.
-        
+
     Returns:
         Formatted string like "1.23 MB".
     """
@@ -24,13 +24,13 @@ def format_size(size_bytes: int) -> str:
     return f"{size_bytes:.2f} TB"
 
 
-def get_file_size(file: Union[BinaryIO, BytesIO]) -> str:
+def get_file_size(file: BinaryIO | BytesIO) -> str:
     """
     Get the size of a file-like object as a formatted string.
-    
+
     Args:
         file: File-like object with getvalue() method.
-        
+
     Returns:
         Formatted size string.
     """
@@ -49,10 +49,10 @@ def get_file_size(file: Union[BinaryIO, BytesIO]) -> str:
 def sanitize_filename(filename: str) -> str:
     """
     Sanitize a filename by removing invalid characters.
-    
+
     Args:
         filename: Original filename.
-        
+
     Returns:
         Sanitized filename safe for filesystem use.
     """
@@ -69,12 +69,12 @@ def sanitize_filename(filename: str) -> str:
 def truncate_text(text: str, max_length: int = 1000, suffix: str = "...") -> str:
     """
     Truncate text to a maximum length.
-    
+
     Args:
         text: Text to truncate.
         max_length: Maximum length.
         suffix: Suffix to add if truncated.
-        
+
     Returns:
         Truncated text.
     """
@@ -86,11 +86,11 @@ def truncate_text(text: str, max_length: int = 1000, suffix: str = "...") -> str
 def count_lines(text: str, exclude_empty: bool = True) -> int:
     """
     Count the number of lines in text.
-    
+
     Args:
         text: Text to count lines in.
         exclude_empty: Whether to exclude empty lines.
-        
+
     Returns:
         Number of lines.
     """

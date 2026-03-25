@@ -4,20 +4,20 @@ Sidebar configuration and rendering.
 
 import streamlit as st
 
-from ..converter.models import ExportOptions
 from .. import __version__
+from ..converter.models import ExportOptions
 
 
 def render_sidebar() -> ExportOptions:
     """
     Render the sidebar with all configuration options.
-    
+
     Returns:
         ExportOptions configured by the user.
     """
     with st.sidebar:
         st.markdown("### Settings")
-        
+
         st.markdown("#### Export Options")
         include_outputs = st.toggle(
             "Include outputs",
@@ -34,9 +34,9 @@ def render_sidebar() -> ExportOptions:
             value=True,
             help="Export markdown cells as a separate documentation file"
         )
-        
+
         st.markdown("---")
-        
+
         with st.expander("Advanced Options"):
             remove_magic = st.toggle(
                 "Remove magic commands",
@@ -60,34 +60,34 @@ def render_sidebar() -> ExportOptions:
                 index=0,
                 help="Character encoding for output files"
             )
-        
+
         st.markdown("---")
-        
+
         st.markdown("### About")
         st.markdown(
             f"""
             **Notebook Converter** v{__version__}
-            
+
             Converts Jupyter Notebooks into:
             - Python scripts
             - Output files
             - Markdown documentation
             - Extracted images
-            
+
             All files are processed in-memory.
             """
         )
-        
+
         st.markdown("---")
-        
+
         st.markdown(
             """
             [Documentation](https://github.com/JuanLara18/notebook-converter)
-            
+
             [Report an Issue](https://github.com/JuanLara18/notebook-converter/issues)
             """
         )
-    
+
     return ExportOptions(
         include_outputs=include_outputs,
         include_images=include_images,

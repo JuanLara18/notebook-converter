@@ -3,19 +3,18 @@ Data models for notebook conversion.
 """
 
 from dataclasses import dataclass, field
-from typing import List, Tuple, Optional
 
 
 @dataclass
 class NotebookStats:
     """Statistics about a processed notebook."""
-    
+
     code_cells: int = 0
     markdown_cells: int = 0
     raw_cells: int = 0
     images: int = 0
     code_lines: int = 0
-    
+
     def __add__(self, other: "NotebookStats") -> "NotebookStats":
         """Allow adding stats together for totals."""
         return NotebookStats(
@@ -30,12 +29,12 @@ class NotebookStats:
 @dataclass
 class ProcessedNotebook:
     """Container for a processed notebook's content."""
-    
+
     name: str
     code: str
     outputs: str
     markdown: str
-    images: List[Tuple[str, bytes]] = field(default_factory=list)
+    images: list[tuple[str, bytes]] = field(default_factory=list)
     stats: NotebookStats = field(default_factory=NotebookStats)
     size: str = ""
     original_size_bytes: int = 0
@@ -44,23 +43,23 @@ class ProcessedNotebook:
 @dataclass
 class ExportOptions:
     """Options for notebook export."""
-    
+
     include_outputs: bool = True
     include_images: bool = True
     include_markdown: bool = True
     remove_magic_commands: bool = False
     add_cell_numbers: bool = False
-    custom_zip_name: Optional[str] = None
+    custom_zip_name: str | None = None
     encoding: str = "utf-8"
 
 
 @dataclass
 class ConversionError:
     """Represents an error during conversion."""
-    
+
     filename: str
     error_type: str
     message: str
-    
+
     def __str__(self) -> str:
         return f"[{self.error_type}] {self.filename}: {self.message}"

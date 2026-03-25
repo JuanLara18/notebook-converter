@@ -167,7 +167,7 @@ def apply_styles() -> None:
 def render_custom_header(title: str, subtitle: str) -> None:
     """
     Render a custom styled header.
-    
+
     Args:
         title: Main title text.
         subtitle: Subtitle text.
