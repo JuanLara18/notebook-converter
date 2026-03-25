@@ -1,6 +1,6 @@
-# Contributing to Notebook Converter Pro
+# Contributing to Notebook Converter
 
-We love your input! We want to make contributing to Notebook Converter Pro as easy and transparent as possible, whether it's:
+We love your input! We want to make contributing to Notebook Converter as easy and transparent as possible, whether it's:
 
 - Reporting a bug
 - Discussing the current state of the code
@@ -9,6 +9,7 @@ We love your input! We want to make contributing to Notebook Converter Pro as ea
 - Becoming a maintainer
 
 ## Development Process
+
 We use GitHub to host code, to track issues and feature requests, as well as accept pull requests.
 
 1. Fork the repo and create your branch from `main`.
@@ -19,10 +20,12 @@ We use GitHub to host code, to track issues and feature requests, as well as acc
 6. Issue that pull request!
 
 ## Any contributions you make will be under the MIT Software License
+
 When you submit code changes, your submissions are understood to be under the same [MIT License](LICENSE) that covers the project. Feel free to contact the maintainers if that's a concern.
 
-## Report bugs using GitHub's [issue tracker](https://github.com/LeonardoFalla/notebook-converter/issues)
-We use GitHub issues to track public bugs. Report a bug by [opening a new issue](https://github.com/LeonardoFalla/notebook-converter/issues/new); it's that easy!
+## Report bugs using GitHub's [issue tracker](https://github.com/JuanLara18/notebook-converter/issues)
+
+We use GitHub issues to track public bugs. Report a bug by [opening a new issue](https://github.com/JuanLara18/notebook-converter/issues/new); it's that easy!
 
 ## Write bug reports with detail, background, and sample code
 
@@ -37,4 +40,5 @@ We use GitHub issues to track public bugs. Report a bug by [opening a new issue]
 - Notes (possibly including why you think this might be happening, or stuff you tried that didn't work)
 
 ## License
+
 By contributing, you agree that your contributions will be licensed under its MIT License.
