@@ -26,7 +26,7 @@ packages = [{include = "src"}]
 
 [tool.poetry.urls]
 Homepage = "https://github.com/JuanLara18/notebook-converter"
-Documentation = "https://github.com/JuanLara18/notebook-converter#readme"
+Documentation = "https://github.com/JuanLara18/notebook-converter/tree/main/docs"
 Repository = "https://github.com/JuanLara18/notebook-converter.git"
 Issues = "https://github.com/JuanLara18/notebook-converter/issues"
 
